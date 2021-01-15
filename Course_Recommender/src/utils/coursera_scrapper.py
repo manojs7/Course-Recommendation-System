@@ -32,24 +32,27 @@ options.add_argument('--headless')
 #options.add_argument('--disable-gpu')  # Last I checked this was necessary.
 driver = webdriver.Chrome('C:/Users/Acer/Downloads/chromedriver', chrome_options=options)
 print("Chrome Opened Succesfully")'''
-
-def coursera_scrapper(url,search_entry):
-    driver = webdriver.Chrome()
-    driver.get(url)
-    
-    #login attempt
-    login=WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[3]/div/div/span/div[1]/header/div[2]/div/div[1]/div/div/div[4]/div/ul/li[3]/a")))
-    login=driver.find_element_by_xpath("/html/body/div[3]/div/div/span/div[1]/header/div[2]/div/div[1]/div/div/div[4]/div/ul/li[3]/a")
-    login.click()
-    time.sleep(2)
-    email=driver.find_element_by_xpath("/html/body/div[3]/div/div/span/div[3]/div/div/div[3]/div/div/div/div[2]/div/div[1]/form/div[1]/div[1]/div/div[2]/input")
-    email.send_keys("tikas54892@pidouno.com")
-    password=driver.find_element_by_xpath("/html/body/div[3]/div/div/span/div[3]/div/div/div[3]/div/div/div/div[2]/div/div[1]/form/div[1]/div[2]/div/div[2]/input")
-    password.send_keys("tikas54892")
-    login_btn=driver.find_element_by_xpath("/html/body/div[3]/div/div/span/div[3]/div/div/div[3]/div/div/div/div[2]/div/div[1]/form/div[1]/button")
-    time.sleep(2)
-    login_btn.click()
-    print("Login Successful")
+class coscrapper(url,search_entry):
+    def __init__(self, url, search_entry):
+        self.url=url
+        self.search_entry=search_entry
+    def coursera_scrapper(self):
+        driver = webdriver.Chrome()
+        driver.get(url)
+        
+        #login attempt
+        login=WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[3]/div/div/span/div[1]/header/div[2]/div/div[1]/div/div/div[4]/div/ul/li[3]/a")))
+        login=driver.find_element_by_xpath("/html/body/div[3]/div/div/span/div[1]/header/div[2]/div/div[1]/div/div/div[4]/div/ul/li[3]/a")
+        login.click()
+        time.sleep(2)
+        email=driver.find_element_by_xpath("/html/body/div[3]/div/div/span/div[3]/div/div/div[3]/div/div/div/div[2]/div/div[1]/form/div[1]/div[1]/div/div[2]/input")
+        email.send_keys("tikas54892@pidouno.com")
+        password=driver.find_element_by_xpath("/html/body/div[3]/div/div/span/div[3]/div/div/div[3]/div/div/div/div[2]/div/div[1]/form/div[1]/div[2]/div/div[2]/input")
+        password.send_keys("tikas54892")
+        login_btn=driver.find_element_by_xpath("/html/body/div[3]/div/div/span/div[3]/div/div/div[3]/div/div/div/div[2]/div/div[1]/form/div[1]/button")
+        time.sleep(2)
+        login_btn.click()
+        print("Login Successful")
     #time.sleep(10)
     try:
         #switching frames to captcha
